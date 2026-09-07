@@ -764,6 +764,10 @@ endif()
 add_executable(bssl ${BSSL_SOURCES})
 target_link_libraries(bssl ssl crypto)
 
+# Standalone UDP peer for DTLS 1.3 interoperability testing.
+add_executable(dtls13_peer tool/dtls13_peer.cc)
+target_link_libraries(dtls13_peer ssl crypto)
+
 if(BUILD_TESTING)
   add_executable(generate_mldsa_certs pki/testdata/verify_unittest/generate_mldsa_certs.cc)
   target_link_libraries(generate_mldsa_certs crypto)
